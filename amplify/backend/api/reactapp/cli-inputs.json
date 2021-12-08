@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "reactapp",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/simontowell/react-app/amplify/backend/api/reactapp/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authreactapp3bd00e42"
+    }
+  }
+}
