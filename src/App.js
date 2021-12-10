@@ -22,15 +22,23 @@ function App() {
 
   async function createNote() {
     if (!formData.name || !formData.description) return;
-    await API.graphql({ query: createNoteMutation, variables: { input: formData } });
-    setNotes([ ...notes, formData ]);
-    setFormData(initialFormState);
+    try {
+      await API.graphql({ query: createNoteMutation, variables: { input: formData } });
+      setNotes([ ...notes, formData ]);
+      setFormData(initialFormState);
+    } catch(e) {
+      alert(JSON.stringify(e))
+    }
   }
 
   async function deleteNote({ id }) {
     const newNotesArray = notes.filter(note => note.id !== id);
-    setNotes(newNotesArray);
-    await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+    try {
+      await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+      setNotes(newNotesArray);
+    } catch(e) {
+      alert(JSON.stringify(e))
+    }
   }
 
   return (
